@@ -5,6 +5,9 @@ import neurom as nm
 from neurom import view
 from hoc2swc import neuron2swc
 
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
 # Global containers for objects
 simulations_records = []  # stimulations
 voltage_records = []  # voltage recordings
@@ -84,3 +87,28 @@ def plot_morphology(fname="cell_01"):
     neuron2swc(fname, 0) #swap_yz=False)
     neuron1 = nm.load_morphology(fname)
     view.plot_morph(neuron1)
+
+def chage_passive_prop(cell):
+    # Fix description width using layout
+    style = {'description_width': '150px'} # Adjust as needed
+
+    # Create three input boxes
+    var1_box = widgets.FloatText(description='Diamater (µm):', value=1.0, style=style)
+    var2_box = widgets.FloatText(description='Axial resistivity (Ω*cm):', value=300.0, style=style)
+    var3_box = widgets.FloatText(description='Capacitance (µF/cm^2):', value=1.0, style=style)
+
+    # Create a button
+    save_button = widgets.Button(description='Change Values')
+
+    # Function to save values when button is clicked
+    def click_button(b):
+        reset()
+        cell.dend.diam = var1_box.value
+        cell.dend.Ra = var2_box.value
+        cell.dend.cm = var3_box.value
+        print("Values changed!")
+
+    save_button.on_click(click_button)
+
+    # Display input boxes and button
+    display(var1_box, var2_box, var3_box, save_button)
