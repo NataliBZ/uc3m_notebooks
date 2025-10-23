@@ -89,6 +89,7 @@ def plot_morphology(fname="cell_01"):
     view.plot_morph(neuron1)
 
 def chage_passive_prop(cell):
+    reset()
     # Fix description width using layout
     style = {'description_width': '150px'} # Adjust as needed
 
