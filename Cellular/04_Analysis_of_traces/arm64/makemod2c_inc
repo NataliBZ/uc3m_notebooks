@@ -1,24 +1,24 @@
-./NaTs2_t.c: ../NaTs2_t.mod
+NaTs2_t.cpp: ../NaTs2_t.mod $(NOCMODL)
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "NaTs2_t.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "NaTs2_t.mod"  -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64" )
 
-./NaTs2_t.o: ./NaTs2_t.c
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
-	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+./NaTs2_t.o: NaTs2_t.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<\\n"
+	$(CXXCOMPILE) -I".." $(INCLUDES) -fPIC -c "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<" -o $@
 
-./SK_E2.c: ../SK_E2.mod
+SK_E2.cpp: ../SK_E2.mod $(NOCMODL)
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SK_E2.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SK_E2.mod"  -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64" )
 
-./SK_E2.o: ./SK_E2.c
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
-	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+./SK_E2.o: SK_E2.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<\\n"
+	$(CXXCOMPILE) -I".." $(INCLUDES) -fPIC -c "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<" -o $@
 
-./SKv3_1.c: ../SKv3_1.mod
+SKv3_1.cpp: ../SKv3_1.mod $(NOCMODL)
 	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
-	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SKv3_1.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64")
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SKv3_1.mod"  -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64" )
 
-./SKv3_1.o: ./SKv3_1.c
-	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
-	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+./SKv3_1.o: SKv3_1.cpp
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) /Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<\\n"
+	$(CXXCOMPILE) -I".." $(INCLUDES) -fPIC -c "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/04_Analysis_of_traces/arm64/$<" -o $@
 
