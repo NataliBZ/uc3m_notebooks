@@ -1,0 +1,88 @@
+./CaDynamics_DC0.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/CaDynamics_DC0.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "CaDynamics_DC0.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./CaDynamics_DC0.o: ./CaDynamics_DC0.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ca_HVA2.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/Ca_HVA2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ca_HVA2.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./Ca_HVA2.o: ./Ca_HVA2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ca_LVAst.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/Ca_LVAst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ca_LVAst.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./Ca_LVAst.o: ./Ca_LVAst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Ih.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/Ih.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Ih.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./Ih.o: ./Ih.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./K_Pst.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/K_Pst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "K_Pst.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./K_Pst.o: ./K_Pst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./K_Tst.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/K_Tst.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "K_Tst.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./K_Tst.o: ./K_Tst.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./NaTg.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/NaTg.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "NaTg.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./NaTg.o: ./NaTg.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./Nap_Et2.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/Nap_Et2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "Nap_Et2.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./Nap_Et2.o: ./Nap_Et2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./SK_E2.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/SK_E2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SK_E2.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./SK_E2.o: ./SK_E2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./SKv3_1.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/SKv3_1.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "SKv3_1.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./SKv3_1.o: ./SKv3_1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./TTXDynamicsSwitch.c: ../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms/TTXDynamicsSwitch.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "TTXDynamicsSwitch.mod" -o "/Users/natalibarroszulaica/Desktop/OBI/UC3M/UC3M_notebooks_tutorials_LOCAL/uc3m_notebooks/Cellular/03_Action_Potential_na_k_recording/arm64")
+
+./TTXDynamicsSwitch.o: ./TTXDynamicsSwitch.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../4846377e-b403-4fa8-bfd3-9b95506f9dc3/mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
