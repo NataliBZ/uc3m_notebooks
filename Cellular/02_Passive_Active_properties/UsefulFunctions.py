@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import neurom as nm
 from neurom import view
 from hoc2swc import neuron2swc
+import numpy as np
 
 import ipywidgets as widgets
 from IPython.display import display, clear_output
@@ -90,26 +91,61 @@ def plot_morphology(fname="cell_01"):
 
 def chage_passive_prop(cell):
     reset()
-    # Fix description width using layout
-    style = {'description_width': '150px'} # Adjust as needed
 
-    # Create three input boxes
-    var1_box = widgets.FloatText(description='Diamater (µm):', value=1.0, style=style)
-    var2_box = widgets.FloatText(description='Axial resistivity (Ω*cm):', value=300.0, style=style)
-    var3_box = widgets.FloatText(description='Capacitance (µF/cm^2):', value=1.0, style=style)
+    # --- Layout settings ---
+    style = {'description_width': '150px'}
+    layout = widgets.Layout(width='400px')
 
-    # Create a button
-    save_button = widgets.Button(description='Change Values')
+    # --- Input boxes for passive properties ---
+    var1_box = widgets.FloatText(description='Diameter (µm):', value=1.0, style=style, layout=layout)
+    var2_box = widgets.FloatText(description='Axial resistivity (Ω·cm):', value=300.0, style=style, layout=layout)
+    var3_box = widgets.FloatText(description='Capacitance (µF/cm²):', value=1.0, style=style, layout=layout)
 
-    # Function to save values when button is clicked
+    # --- Button to apply changes ---
+    save_button = widgets.Button(description='Change Values', button_style='success')
+
+    # --- Output area for plots ---
+    output = widgets.Output()
+
+    # --- What happens when you click the button ---
     def click_button(b):
-        reset()
-        cell.dend.diam = var1_box.value
-        cell.dend.Ra = var2_box.value
-        cell.dend.cm = var3_box.value
-        print("Values changed!")
+        with output:
+            clear_output(wait=True)  # clear old plots
 
+            # Update biophysical properties
+            cell.dend.diam = var1_box.value
+            cell.dend.Ra = var2_box.value
+            cell.dend.cm = var3_box.value
+
+            print(f"Updated parameters:\n  diam={cell.dend.diam}, Ra={cell.dend.Ra}, cm={cell.dend.cm}")
+            print("Running simulation...")
+
+            # Setup new simulation
+            reset()
+            delays = np.arange(100, 600, 200)
+            locations = np.linspace(0, 1, 3)
+            for p in zip(locations, delays):
+                iclamp(cell.dend(p[0]), amplitude=0.4, delay=p[1], duration=50)
+            record_voltage(cell.soma(0.5))
+
+            # Run and plot results
+            v_init = -70
+            t_stop = 700
+            t = init_run(v_init, t_stop)
+            tvi_plots(t, voltage_records, current_records, vmax=0)
+            plt.show()
+
+    # Connect button click to function
     save_button.on_click(click_button)
 
-    # Display input boxes and button
-    display(var1_box, var2_box, var3_box, save_button)
+    # --- Layout UI ---
+    ui = widgets.VBox([
+        widgets.HTML("<b>Adjust Passive Properties</b>"),
+        var1_box,
+        var2_box,
+        var3_box,
+        save_button,
+        output
+    ])
+
+    display(ui)
