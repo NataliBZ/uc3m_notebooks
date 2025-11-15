@@ -196,7 +196,7 @@ def choose_protocol():
     """
     global resp_list_global 
     
-    exp_list = ['exp_APWaveform', 'exp_FirePattern', 'exp_IV']
+    exp_list = ['exp_FirePattern', 'exp_IV']
 
     dropdown = widgets.Dropdown(
         options=exp_list,
@@ -210,8 +210,8 @@ def choose_protocol():
         global resp_list_global
         output.clear_output(wait=True)
         with output:
-            resp_path = f'data/{exp_name}_ch6_*.dat'
-            stim_path = f'data/{exp_name}_ch7_*.dat'
+            resp_path = f'{exp_name}_ch6_*.dat'
+            stim_path = f'{exp_name}_ch7_*.dat'
 
             resp_list = sorted(glob.glob(resp_path))
             stim_list = sorted(glob.glob(stim_path))
@@ -296,6 +296,65 @@ def choose_answer():
     # Layout UI
     ui = widgets.VBox([dropdown, output])
     display(ui)
+
+
+#mean_trace_global = None   # <-- will store the output of the function
+
+def choose_connection():
+    """
+    Shows a dropdown with connection h5 file names and plots the corresponding
+    experimental traces. Returns a dictionary that will hold the mean trace.
+    """
+
+    exp_list = ['connection_c1', 'connection_c2', 'connection_c4']
+
+    # A safe container to store the mean trace after selection
+    result = {"mean_trace": None}
+
+    dropdown = widgets.Dropdown(
+        options=exp_list,
+        description='Select:',
+        style={'description_width': 'initial'}
+    )
+
+    output = widgets.Output()
+
+    def plot_traces(exp_name):
+        """Plots all sweeps and stores the mean trace."""
+        with output:
+            output.clear_output()
+
+            # Read the H5 file
+            with h5py.File(f'{exp_name}.h5', "r") as data:
+                traces = np.array([data[key][()] for key in data.keys()])
+
+            # Compute mean trace
+            mean_trace = np.mean(traces, axis=0)
+            result["mean_trace"] = mean_trace  # store it safely
+
+            # Plot sweeps and mean
+            plt.figure(figsize=(8, 4))
+            for trace in traces:
+                plt.plot(trace, "b--", alpha=0.4)
+
+            plt.plot(mean_trace, "r", linewidth=2, label='mean')
+            plt.ylabel('V (V)')
+            plt.xlabel('time (ms)')
+            plt.title(f"{exp_name}")
+            plt.legend()
+            plt.show()
+
+            print("Mean trace stored in result['mean_trace']")
+
+    # Link dropdown to plot
+    widgets.interactive_output(plot_traces, {'exp_name': dropdown})
+
+    display(dropdown, output)
+
+    # Return the dictionary that will hold the mean trace
+    return result
+
+
 
 def compute_failure_rate(files):
     traces_collection = {}
